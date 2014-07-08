@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.unlimitedfield.y.domain">
+	<class name="MessageBoard" table="tbl_messageBoard" abstract="true">
+		<id name="id" column="`id`" type="long">
+			<generator class="native"></generator>
+		</id>
+		<property name="message" column="`message`" type="string" length="255" />
+	</class>
+</hibernate-mapping>

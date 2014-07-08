@@ -18,7 +18,7 @@
 	<!-- http://localhost:8080/happin/{1}_{2} -->
 	<package name="root" namespace="/" extends="struts-default,json-default">
 		<result-types>
-			<result-type name="streamx" class="com.sunspoter.lib.web.struts2.dispatcher.StreamResultX" />
+			<result-type name="streamEx" class="com.unlimitedfield.y.base.StreamExResult" />
 			<result-type name="jsonEx" class="com.unlimitedfield.y.base.JsonExResult" />
 		</result-types>
 		
@@ -42,7 +42,8 @@
 		<default-action-ref name="index_show"></default-action-ref>
 
 		<!-- 只有此处与 struts_test 保持最新 -->
-		<action name="*_*" class="{1}Action" method="{2}">
+		<!-- <action name="*_*" class="{1}Action" method="{2}"> -->
+		<action name="*_*" class="com.unlimitedfield.phonebook.view.action.{1}Action" method="{2}">
 			<result>/jsp/action/{1}/{2}.jsp</result>
 			<result name="dispatcher" type="dispatcher">${actionResult.dispatcher}</result>
 			<result name="json" type="json">
@@ -62,7 +63,7 @@
   					<param name="contentType">text/plain</param>
   					<param name="contentCharSet">utf-8</param>
 			</result>
-			<result name="downLoad" type="streamx">
+			<result name="downLoad" type="streamEx">
   					<param name="inputName">actionResult.downLoad.inputStream</param>
   					<param name="contentType">${actionResult.downLoad.contentType}</param>
   					<param name="contentDisposition">${actionResult.downLoad.fileName}</param>
@@ -76,17 +77,4 @@
 
 	</package>
 
-
-	<!-- struts2 学习，测试 -->
-	<include file="com/unlimitedfield/y/study/struts/struts_struts.xml" />
-	
-	<!-- hp -->
-	<include file="/com/unlimitedfield/y/toother/hp/struts_hp.xml" />
-	
-	<!-- 测试jqui -->
-	<include file="com/unlimitedfield/y/study/jqui/struts_jqui.xml" />
-	
-	<!-- clear -->
-	<!-- 加入spring的整合测试 -->
-	<!-- <include file="/com/unlimitedfield/y/spring/a_action/struts_spring.xml" /> -->
 </struts>    

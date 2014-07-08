@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.unlimitedfield.y.domain">
+	<subclass name="Privilege" extends="Parameter" discriminator-value="privilege">
+		<!-- 此处可以复用 -->
+		<property name="url" column="`option`" type="string" length="255" />
+
+	</subclass>
+</hibernate-mapping>

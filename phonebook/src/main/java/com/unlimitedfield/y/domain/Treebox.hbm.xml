@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.unlimitedfield.y.domain">
+	<subclass name="Treebox" extends="Parameter" discriminator-value="treebox">
+		<property name="option" column="`option`" type="string" length="255" />
+
+		<!-- parent属性，本类与 （上级）的多对一 -->
+		<many-to-one name="parent" class="Treebox" column="`parentId`"></many-to-one>
+
+		<!-- children属性，本类 （下级）的一对多 -->
+		<!-- delete父类则子类就没有意义了 -->
+		<!-- save-update级联添加暂时只有测试等用到 -->
+		<set name="children" cascade="save-update,delete" order-by="id asc">
+			<key column="`parentId`"></key>
+			<one-to-many class="Treebox" />
+		</set>
+
+	</subclass>
+</hibernate-mapping>
