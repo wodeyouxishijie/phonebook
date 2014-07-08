@@ -1,4 +1,5 @@
-git add -A a
+git add -A phonebook/material
+git add -A phonebook/src
 ::git add -A: [<path>]表示把<path>中所有tracked文件中被修改过或已删除文件和所有untracted的文件信息添加到索引库。
 ::省略<path>表示.,即当前目录。
 
