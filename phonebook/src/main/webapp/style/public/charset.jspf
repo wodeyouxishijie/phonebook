@@ -1,0 +1,5 @@
+<%@page language="java" pageEncoding="UTF-8"%><%--
+共同的引入
+这个头文件会变得没有意义，如果设置了contentType="text/html;charset=GBK"的page属性后
+--%><%@include file="/style/public/base.jspf" %>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />

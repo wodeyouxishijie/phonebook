@@ -1,0 +1,8 @@
+<%@page language="java" pageEncoding="UTF-8"%><%--
+共同的引入
+--%><%@include file="/style/public/charset.jspf" %>
+<script type="text/javascript" src="style/easyui/jquery.min.js" charset="UTF-8"></script>
+<link rel="stylesheet" type="text/css" href="style/easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="style/easyui/themes/icon.css" />
+<script type="text/javascript" src="style/easyui/jquery.easyui.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="style/easyui/locale/easyui-lang-zh_CN.js" charset="UTF-8"></script>

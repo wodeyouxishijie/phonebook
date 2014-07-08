@@ -21,10 +21,7 @@
          	">
     
     <!-- main -->
-    <context:component-scan base-package="com.unlimitedfield.phonebook" />
-    
-    <!-- test -->
-    <context:component-scan base-package="com.unlimitedfield.test.phonebook" />
+    <context:component-scan base-package="com.unlimitedfield" />
     
 	<!-- hibernate -->
 	<import resource="config/spring/applicationContext_hibernate.xml"/>

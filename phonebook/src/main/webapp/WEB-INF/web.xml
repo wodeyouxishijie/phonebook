@@ -783,14 +783,22 @@ standard deployment descriptor.
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	
-	<!-- 配置Spring的用于初始化ApplicationContext的监听器 
+	<!-- 配置Spring的用于初始化ApplicationContext的监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
-	</context-param>-->
+		<!-- 不知道为什么这就是不可以 -->
+		<!-- <param-value>classpath:applicationContext*.xml</param-value> -->
+		<!-- 可以但是只是一层目录的 -->
+		<!-- <param-value>classpath*:applicationContext*.xml</param-value> -->
+	</context-param>
+	<!-- <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/applicationContext*.xml</param-value>
+	</context-param> -->
 	
 	<!-- firstFilter and no endFilter for struts2s reason-->
 	<filter>
@@ -801,7 +809,16 @@ standard deployment descriptor.
 		<filter-name>firstFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<!-- Spring lazy filter 
+<!-- slf lazy filter 	
+	<filter>
+		<filter-name>HibernateCurrentSession</filter-name>
+		<filter-class>com.unlimitedfield.y.servlet.filter.HibernateCurrentSession</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>HibernateCurrentSession</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> -->
+	<!-- Spring lazy filter -->
 	<filter>
 		<filter-name>openSessionInViewFilter</filter-name>
 		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
@@ -809,7 +826,7 @@ standard deployment descriptor.
 	<filter-mapping>
 		<filter-name>openSessionInViewFilter</filter-name>
 		<url-pattern>*.action</url-pattern>
-	</filter-mapping>-->
+	</filter-mapping>
 	<!-- struts2 core filter-->
 	<filter>
 		<filter-name>struts2</filter-name>

@@ -1,0 +1,5 @@
+<%@page language="java" pageEncoding="UTF-8"%><%--
+共同的引入
+--%><%@include file="/style/public/jquery.jspf" %>
+<%@include file="/style/public/ymodelcss.jspf" %>
+<script type="text/javascript" src="script/ysmodel.js" charset="UTF-8"></script>

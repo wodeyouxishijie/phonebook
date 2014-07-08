@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import org.jfree.util.Log;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +20,9 @@ import org.springframework.stereotype.Service;
  */
 @Service("serverService")
 public class ServerServiceImpl implements ServerService{
+	
+	private static Logger log = Logger.getLogger(ServerServiceImpl.class);
+	
 	private ServerSocket socket;
 	private int port = 19888;
 	
@@ -32,11 +35,11 @@ public class ServerServiceImpl implements ServerService{
 		} catch (IOException e) {
 //			e.printStackTrace();
 			//打开端口异常
-			Log.warn(getExceptionDetail(e));
+			log.warn(getExceptionDetail(e));
 		}
 		
 		try {
-			Log.warn("等待客户端链接...");
+			log.warn("等待客户端链接...");
 			Socket s = this.socket.accept();
 			InputStream in = s.getInputStream();
 			OutputStream out = s.getOutputStream();
@@ -55,11 +58,11 @@ public class ServerServiceImpl implements ServerService{
 			
 			writer.println("再见！客户端");
 			writer.flush();
-			Log.warn("通信结束。");
+			log.warn("通信结束。");
 			//socket.close();
 		} catch (Exception e) {
-			Log.warn("start err");
-			Log.warn(getExceptionDetail(e));
+			log.warn("start err");
+			log.warn(getExceptionDetail(e));
 		}
 	}
 	

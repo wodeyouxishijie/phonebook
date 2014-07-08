@@ -47,7 +47,7 @@
 
 
 	<logger name="com.unlimitedfield" additivity="false">
-		<level value="info" />
+		<level value="all" />
 		<appender-ref ref="console" />
 		<appender-ref ref="file2" />
 	</logger>
