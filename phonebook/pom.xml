@@ -23,20 +23,13 @@
 		<!-- 新加的包请添加在下面 -->
 		
 		<!-- 新加的包请添加在上面 -->
-
-		<!-- 
-			不明白我tomcat环境变量里有servlet-api为什么junit测试的时候还是报错 
-			于是先设定为个provided的
-			com.unlimitedfield.test.ApplicationContextTest:test_run()
-		-->
+		<!-- servlet api -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency> 
-		<!-- 以上疑惑 -->
-		
 		<!-- mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
