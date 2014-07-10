@@ -7,7 +7,7 @@ http://localhost:8080/happin/jsp/test/time/time.jsp
 <%@include file="/style/public/ymodelui.jspf" %>
 <title>server time running</title>
 <script type="text/javascript">
-<%@include file="/jsp/test/time/time.js" %>
+<%@include file="/jsp/action/index/showTime.js" %>
 </script>
 </head>
 <body>

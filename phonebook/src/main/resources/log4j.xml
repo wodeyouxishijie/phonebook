@@ -11,28 +11,8 @@
 		</layout>
 	</appender>
 
-	<!--
-	<appender name="file" class="org.apache.log4j.RollingFileAppender">
-		-如果服务器未启动直接在根目录,盘符的根目录 -
-		<param name="File" value="${catalina.home}/log/logx.txt" />
-		- <param name="File" value="c:/log/logx.txt" /> -
-		<param name="Append" value="true" />
-		<param name="MaxFileSize" value="10MB" />
-		<param name="MaxBackupIndex" value="100" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="\  %d{yyyy/MM/dd HH\:mm\:ss} %6p %t\:%c\:%L%n%m%n" />
-		</layout>
-	</appender>
-	-->
 	<appender name="file2" class="org.apache.log4j.RollingFileAppender">
-		<!--如果服务器未启动直接在根目录,盘符的根目录 
-			因为是以/开头的，如果不是则在当前项目开始
-			但是如果直接log/log4455123.txt 部署的时候会直接在tomcat的bin文件里面
-		<param name="File" value="${catalina.home}/log/logs.txt" />
-		<param name="File" value="c:/log4j/happin/log.txt" />-->
-		
-		<param name="File" value="${catalina.home}/log4j/happin/log.txt" />
-		
+		<param name="File" value="${catalina.home}/log4j/phonebook/log.txt" />
 		<param name="Append" value="true" />
 		<param name="MaxFileSize" value="10MB" />
 		<param name="MaxBackupIndex" value="100" />
@@ -44,8 +24,6 @@
 			<param name="LevelMax" value="fatal" />
 		</filter>
 	</appender>
-
-
 
 	<logger name="com.unlimitedfield" additivity="false">
 		<level value="all" />
