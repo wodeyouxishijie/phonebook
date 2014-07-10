@@ -15,7 +15,9 @@
 	
 	<!-- load properties -->
 	<context:property-placeholder location="classpath:jdbc.properties"/>
-
+	
+	<!-- ehcache 未设定 -->
+	
 	<!-- c3p0 dataSource -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="jdbcUrl" value="${url}"></property>
