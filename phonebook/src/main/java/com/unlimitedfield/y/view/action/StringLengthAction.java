@@ -20,7 +20,7 @@ public class StringLengthAction extends BaseAction{
 
 	/**
 	 * 显示
-	 * http://localhost:8080/happin/stringLength_main
+	 * http://localhost:8080/phonebook/stringLength_main
 	 */
 	public String main(){
 		return actionResult.getResult();

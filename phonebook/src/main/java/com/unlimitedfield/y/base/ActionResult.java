@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
 /**
- * 通配符的方式之免xml配置的实体
+ * struts2通配符的方式之免xml配置的实体
  * 
  * @author y
  * 

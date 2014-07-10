@@ -31,7 +31,7 @@ public class ShowFileAction extends BaseAction {
 	private String file;
 	/**
 	 * 列出其文件<br>
-	 * http://localhost:8080/happin/showFile_showIndex
+	 * http://localhost:8080/phonebook/showFile_showIndex
 	 */
 	public String showIndex() { 
 		String sp = File.separator;

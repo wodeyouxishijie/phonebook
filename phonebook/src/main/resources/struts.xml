@@ -10,18 +10,18 @@
 	<!-- 去掉感叹号动态方法调用模式 -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<!-- 把主题配置为simple -->
-    <constant name="struts.ui.theme" value="simple" />
-	<!-- 开发模式,xml修改自动加载,类还需重新部署 ,debug server很强大 -->
-	<!-- <constant name="struts.devMode" value="true" /> 2.3.16没有xml reload这个效果-->
+	<constant name="struts.ui.theme" value="simple" />
+	<!-- 开发模式,xml修改自动加载 -->
+	<!-- <constant name="struts.devMode" value="true" /> 2.3.16没有xml reload这个效果 -->
 	<constant name="struts.configuration.xml.reload" value="true" />
 
-	<!-- http://localhost:8080/happin/{1}_{2} -->
-	<package name="root" namespace="/" extends="struts-default,json-default">
+	<!-- http://localhost:8080/phonebook/{1}_{2} -->
+	<package name="y" namespace="/" extends="struts-default,json-default">
 		<result-types>
 			<result-type name="streamEx" class="com.unlimitedfield.y.base.StreamExResult" />
 			<result-type name="jsonEx" class="com.unlimitedfield.y.base.JsonExResult" />
 		</result-types>
-		
+
 		<interceptors>
 			<interceptor name="firstInterceptor" class="com.unlimitedfield.y.filter.FirstInterceptor" />
 			<interceptor name="actionContextAwareInterceptor" class="com.unlimitedfield.y.filter.ActionContextAwareInterceptor" />
@@ -35,15 +35,13 @@
 				<interceptor-ref name="lastInterceptor"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-		
+
 		<default-interceptor-ref name="defaultStack"></default-interceptor-ref>
-		
+
 		<!-- 用了通配符这就不起作用了 -->
 		<default-action-ref name="index_show"></default-action-ref>
 
-		<!-- 只有此处与 struts_test 保持最新 -->
 		<action name="*_*" class="{1}Action" method="{2}">
-		<!-- <action name="*_*" class="com.unlimitedfield.phonebook.view.action.{1}Action" method="{2}"> -->
 			<result>/jsp/action/{1}/{2}.jsp</result>
 			<result name="dispatcher" type="dispatcher">${actionResult.dispatcher}</result>
 			<result name="json" type="json">
@@ -51,7 +49,7 @@
 			</result>
 			<result name="jsonEx" type="jsonEx">
 				<param name="root">actionResult.jsonEx.json</param>
-				<param name="excludeNullProperties">actionResult.jsonEx.notShowNull</param> 
+				<param name="excludeNullProperties">actionResult.jsonEx.notShowNull</param>
 				<param name="includeProperties">actionResult.jsonEx.show</param>
 				<param name="excludeProperties">actionResult.jsonEx.notShow</param>
 			</result>
@@ -59,14 +57,14 @@
 			<result name="redirectAction" type="redirectAction">${actionResult.redirectAction}${actionResult.redirectParameter}</result>
 			<result name="redirectFunction" type="redirectAction">{1}_${actionResult.redirectFunction}${actionResult.redirectParameter}</result>
 			<result name="string" type="stream">
-  					<param name="inputName">actionResult.string</param> 
-  					<param name="contentType">text/plain</param>
-  					<param name="contentCharSet">utf-8</param>
+				<param name="inputName">actionResult.string</param>
+				<param name="contentType">text/plain</param>
+				<param name="contentCharSet">utf-8</param>
 			</result>
 			<result name="downLoad" type="streamEx">
-  					<param name="inputName">actionResult.downLoad.inputStream</param>
-  					<param name="contentType">${actionResult.downLoad.contentType}</param>
-  					<param name="contentDisposition">${actionResult.downLoad.fileName}</param>
+				<param name="inputName">actionResult.downLoad.inputStream</param>
+				<param name="contentType">${actionResult.downLoad.contentType}</param>
+				<param name="contentDisposition">${actionResult.downLoad.fileName}</param>
 			</result>
 			<result name="image" type="stream">
 				<param name="inputName">actionResult.image</param>

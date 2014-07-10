@@ -12,6 +12,7 @@ import com.unlimitedfield.y.base.BaseAction;
  * <pre>
  * description：
  * SecondLastInterceptor
+ * function as name
  * </pre>
  * 
  * @author y

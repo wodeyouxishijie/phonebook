@@ -3,7 +3,6 @@ package com.unlimitedfield.y.base;
 import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +15,6 @@ import org.apache.struts2.util.ServletContextAware;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import com.unlimitedfield.y.service.MessageBoardService;
 
 /**
  * <pre>
@@ -127,6 +125,6 @@ public abstract class BaseAction<T> //
 	}
 
 	// =============== Service实例的声明 ==================
-	@Resource
-	protected MessageBoardService messageBoardService;
+//	@Resource
+//	protected MessageBoardService messageBoardService;
 }

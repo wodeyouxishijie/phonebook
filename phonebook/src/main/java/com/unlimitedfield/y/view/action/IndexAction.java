@@ -3,23 +3,18 @@ package com.unlimitedfield.y.view.action;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
-import org.junit.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.unlimitedfield.y.base.BaseAction;
 import com.unlimitedfield.y.util.date.Dateu;
-import com.unlimitedfield.y.util.file.Fileu;
-import com.unlimitedfield.y.util.path.Pathu;
 
 /**
  * 主页么
@@ -35,7 +30,7 @@ public class IndexAction extends BaseAction {
 	Logger log = Logger.getLogger(getClass());
 	/**
 	 * 主页<br>
-	 * http://localhost:8080/happin/index_showIndex
+	 * http://localhost:8080/phonebook/index_showIndex
 	 */
 	public String showIndex() {
 

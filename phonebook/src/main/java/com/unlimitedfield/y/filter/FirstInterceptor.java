@@ -11,7 +11,7 @@ import com.unlimitedfield.y.base.ActionContextAware;
 /**
  * <pre>
  * description：
- * 	如名
+ * 	as name
  * </pre>
  * 
  * @author y
