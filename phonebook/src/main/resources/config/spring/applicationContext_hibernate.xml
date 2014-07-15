@@ -55,18 +55,18 @@
 			</list>
 		</property>
 		-->
-		<!-- annontation config -->
+		<!-- annontation config 
 		<property name="packagesToScan">
 			<list>
 				<value>com.unlimitedfield.y.domain</value>
 			</list>
-		</property>
-		<!-- hbm config -->
+		</property>-->
+		<!-- hbm config 
 		<property name="mappingDirectoryLocations">
 			<list>
 				<value>classpath:com/unlimitedfield/y/domain</value>
 			</list>
-		</property>
+		</property>-->
 	</bean>
 	
 	<!-- transactionManager -->
