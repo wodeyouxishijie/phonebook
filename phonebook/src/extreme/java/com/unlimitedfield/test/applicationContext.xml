@@ -37,7 +37,9 @@
 	</bean>
 
 	<!-- sessionFactory -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"> -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> -->
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="hibernateProperties">
 			<props>
@@ -48,12 +50,12 @@
 				<prop key="hibernate.connection.isolation">2</prop>
 			</props>
 		</property>
-		<!-- annontation config -->
+		<!-- annontation config 
 		<property name="packagesToScan">
 			<list>
 				<value>com.unlimitedfield.test.domain</value>
 			</list>
-		</property>
+		</property>-->
 		<!-- hbm config -->
 		<property name="mappingDirectoryLocations">
 			<list>
@@ -62,11 +64,11 @@
 		</property>
 	</bean>
 
-	<!-- transactionManager -->
+	<!-- transactionManager 
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<!-- by annontation model -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	</bean>-->
+	<!-- by annontation model 
+	<tx:annotation-driven transaction-manager="transactionManager" />-->
 
 </beans>

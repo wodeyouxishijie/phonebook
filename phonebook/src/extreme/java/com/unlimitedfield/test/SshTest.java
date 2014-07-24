@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
-import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
 
 import com.unlimitedfield.test.domain.Log;
 import com.unlimitedfield.test.domain.User;
@@ -103,14 +102,14 @@ public class SshTest {
 	@Test
 	public void test_temp() throws Exception {
 		// 这里其实是获取到SessionFactory的上一级对象
-		LocalSessionFactoryBean configBean = (AnnotationSessionFactoryBean) (ac.getBean("&sessionFactory"));
+		LocalSessionFactoryBean configBean = (LocalSessionFactoryBean) (ac.getBean("&sessionFactory"));
 		// 证明有datasoruce
 		// System.out.println(configBean.getDataSource());
 
 		Configuration cfg = configBean.getConfiguration();
-
+		
 		//因为这个为null所以下面异常
-		System.out.println(LocalSessionFactoryBean.getConfigTimeDataSource());
+//		System.out.println(LocalSessionFactoryBean.getConfigTimeDataSource());
 		
 		// datasource not exists
 		// SessionFactory sessionFactory2 = cfg.buildSessionFactory();
