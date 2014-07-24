@@ -1,4 +1,4 @@
-package com.unlimitedfield.y.util.date;
+package com.unlimitedfield.y.util.string;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,6 +36,7 @@ public class Dateu {
 	}
 
 	public static Date parseDateTime(String date) {
+		if(date==null) return null;
 		try {
 			if (date.indexOf("-") != -1) {
 				return sdfdt2.parse(date);
@@ -53,6 +54,7 @@ public class Dateu {
 	}
 
 	public static String formatDateTime(Date date) {
+		if(date==null) return null;
 		try {
 			return sdfdt.format(date);
 		} catch (NullPointerException e) {
@@ -62,6 +64,7 @@ public class Dateu {
 	}
 
 	public static Date parseDate(String date) {
+		if(date==null) return null;
 		try {
 			if (date.indexOf("-") != -1) {
 				return sdfd2.parse(date);
@@ -79,6 +82,7 @@ public class Dateu {
 	}
 
 	public static String formatDate(Date date) {
+		if(date==null) return null;
 		try {
 			return sdfd.format(date);
 		} catch (NullPointerException e) {

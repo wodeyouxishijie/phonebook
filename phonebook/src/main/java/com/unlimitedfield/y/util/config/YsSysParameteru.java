@@ -12,8 +12,8 @@ import org.apache.log4j.Logger;
  * @author y
  * @version createdate：2014/06/06 
  */
-@SuppressWarnings("unused")
 public class YsSysParameteru {
+	@SuppressWarnings("unused")
 	private static Logger log = Logger.getLogger(YsSysParameteru.class);
 }
 

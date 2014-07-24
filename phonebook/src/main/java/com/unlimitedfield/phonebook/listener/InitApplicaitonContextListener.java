@@ -24,19 +24,19 @@ import com.unlimitedfield.y.util.material.Springu;
  */
 @SuppressWarnings("rawtypes")
 @Component
-public class InitApplicaitonContextListener implements ApplicationListener,
-		ServletContextAware,ApplicationContextAware {
+public class InitApplicaitonContextListener implements ApplicationListener, ServletContextAware, ApplicationContextAware {
 
 	private static Logger log = Logger.getLogger(InitApplicaitonContextListener.class);
+	private static boolean isOpen = true;
 	private ServletContext application;
 	private ApplicationContext applicationContext;
-	
+
 	/**
 	 * 初始化事件
 	 */
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
-		log.trace("-->触发Spring事件：" + event.getClass());
+		log.trace("-->Spring初始化...");
 		/**
 		 * 启动事件即刷新事件
 		 */
@@ -44,19 +44,22 @@ public class InitApplicaitonContextListener implements ApplicationListener,
 		if (event instanceof ContextRefreshedEvent) {
 			sb.append("-->**************************\n");
 			sb.append("-->Spring初始化工作:\n");
-			sb.append("-->Spring Util 初始化application实例\n");
+			sb.append("-->Spring Util 初始化applicationContext实例\n");
 			Springu.setApplicationContext(applicationContext);
 			sb.append("-->Hibernate Util 初始化sessionFactory实例\n");
 			Hibernateu.setSessionFactory((SessionFactory) applicationContext.getBean("sessionFactory"));
-			sb.append("-->系统初始化工作(暂未实现)\n");
-//			sb.append("-->初始化系统参数\n");
-			
-			sb.append("-->Web服务器初始化工作(暂未实现):\n");
-			if (application == null) {
-				sb.append("-->Web服务器未启动\n");
-			} else {
-				sb.append("-->Web服务器已启动\n");
-				//对服务器相关操作
+			//因为测试的时候不需要设置初始化参数--------
+			if(isOpen){
+				sb.append("-->系统初始化工作:(暂未实现)\n");
+				// 把内容都写到容器里面去，这样脱离了服务器也能测试
+				sb.append("-->初始化系统参数:(暂未实现)\n");
+				sb.append("-->Web服务器初始化工作:(暂未实现)\n");
+				if (application == null) {
+					sb.append("-->Web服务器未启动\n");
+				} else {
+					sb.append("-->Web服务器已启动\n");
+					//对服务器相关操作
+				}
 			}
 			sb.append("-->**************************");
 		}
@@ -73,9 +76,14 @@ public class InitApplicaitonContextListener implements ApplicationListener,
 	}
 
 	@Override
-	public void setApplicationContext(ApplicationContext applicationContext)
-			throws BeansException {
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 	}
+	public static boolean getIsOpen() {
+		return isOpen;
+	}
 
+	public static void setIsOpen(boolean isOpen) {
+		InitApplicaitonContextListener.isOpen = isOpen;
+	}
 }

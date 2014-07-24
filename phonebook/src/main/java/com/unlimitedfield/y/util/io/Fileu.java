@@ -1,7 +1,8 @@
-package com.unlimitedfield.y.util.file;
+package com.unlimitedfield.y.util.io;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -108,4 +109,16 @@ public class Fileu {
 		return moveFileForMicro(dealUrlForMicro(src),dealUrlForMicro(des));
 	}
 	
+	/**
+	 * 未完全版本
+	 */
+	public static boolean createIfNotExists(File file) throws IOException{
+		if(file==null) return false;
+		if(file.exists()){
+			//System.out.println("已存在");
+		}else{
+			file.createNewFile();
+		}
+		return true;
+	}
 }

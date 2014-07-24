@@ -1,4 +1,4 @@
-package com.unlimitedfield.y.util.array;
+package com.unlimitedfield.y.util.material;
 
 import java.util.ArrayList;
 import java.util.List;

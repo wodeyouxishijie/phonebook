@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.struts2.util.StrutsTypeConverter;
 
-import com.unlimitedfield.y.util.date.Dateu;
+import com.unlimitedfield.y.util.string.Dateu;
 
 /**
  * struts string 参数转为Date的转换器
