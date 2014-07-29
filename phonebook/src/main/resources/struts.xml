@@ -18,7 +18,7 @@
 	<constant name="struts.i18n.reload" value="true" />
 	<constant name="struts.configuration.xml.reload" value="true" />
 
-	<!-- http://localhost:8080/happin/{1}_{2} -->
+	<!-- http://localhost:8080/phonebook/{1}_{2} -->
 	<package name="root" namespace="/" extends="struts-default,json-default">
 		<result-types>
 			<result-type name="streamEx" class="com.unlimitedfield.y.base.StreamExResult" />
