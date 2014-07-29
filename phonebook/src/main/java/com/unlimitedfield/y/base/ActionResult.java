@@ -5,7 +5,10 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
 /**
- * struts2通配符的方式之免xml配置的实体
+ * <pre>
+ * 	struts2 xml配置对象化
+ * 	通配符的方式之免xml配置的实体
+ * </pre>
  * 
  * @author y
  * 
@@ -20,9 +23,9 @@ public class ActionResult {
 	private InputStream image;
 	private String result = "success";
 	private String redirectAction;
-	private String redirectFunction;//同类内的方法
-	private String redirectParameter="";//转发参数
-	
+	private String redirectFunction;// 同类内的方法
+	private String redirectParameter = "";// 转发参数
+
 	public String getDispatcher() {
 		return dispatcher;
 	}
@@ -68,8 +71,7 @@ public class ActionResult {
 			this.string = new ByteArrayInputStream(string.getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			try {
-				this.string = new ByteArrayInputStream(
-						"ErrorEncoding".getBytes("UTF-8"));
+				this.string = new ByteArrayInputStream("ErrorEncoding".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e1) {
 			}
 		}
@@ -124,23 +126,23 @@ public class ActionResult {
 	public String getRedirectParameter() {
 		return redirectParameter;
 	}
-	
+
 	/**
 	 * 一次添加一个，可以添加多个
 	 */
 	public void setRedirectParameter(String redirectParameter) {
-		if(this.redirectParameter.length()==0){
-			this.redirectParameter = "?"+redirectParameter;
-		}else{
-			this.redirectParameter = this.redirectParameter+"&"+redirectParameter;
+		if (this.redirectParameter.length() == 0) {
+			this.redirectParameter = "?" + redirectParameter;
+		} else {
+			this.redirectParameter = this.redirectParameter + "&" + redirectParameter;
 		}
 	}
-	
+
 	/**
 	 * 同set
 	 */
-	public void addRedirectParameter(String redirectParameter){
+	public void addRedirectParameter(String redirectParameter) {
 		setRedirectParameter(redirectParameter);
 	}
-	
+
 }

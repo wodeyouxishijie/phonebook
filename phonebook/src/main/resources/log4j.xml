@@ -1,9 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>  
+<?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE log4j:configuration PUBLIC 
 	"-//LOGGER" 
 	"http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
 <log4j:configuration>
-
 
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
@@ -11,8 +10,27 @@
 		</layout>
 	</appender>
 
+	<!--
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+		-如果服务器未启动直接在根目录,盘符的根目录 -
+		<param name="File" value="${catalina.home}/log/logx.txt" />
+		- <param name="File" value="c:/log/logx.txt" /> -
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="\  %d{yyyy/MM/dd HH\:mm\:ss} %6p %t\:%c\:%L%n%m%n" />
+		</layout>
+	</appender>
+	-->
 	<appender name="file2" class="org.apache.log4j.RollingFileAppender">
-		<param name="File" value="${catalina.home}/log4j/phonebook/log.txt" />
+		<!--如果服务器未启动直接在根目录,盘符的根目录 
+			因为是以/开头的，如果不是则在当前项目开始
+			但是如果直接log/log4455123.txt 部署的时候会直接在tomcat的bin文件里面
+		<param name="File" value="${catalina.home}/log/logs.txt" />
+		<param name="File" value="c:/log4j/happin/log.txt" />-->
+		
+		<param name="File" value="${catalina.home}/log4j/happin/log.txt" />
 		<param name="Append" value="true" />
 		<param name="MaxFileSize" value="10MB" />
 		<param name="MaxBackupIndex" value="100" />
@@ -25,10 +43,27 @@
 		</filter>
 	</appender>
 
+	<!-- 发邮件 
+	<appender name="mail" class="org.apache.log4j.net.SMTPAppender">
+		<param name="threshold" value="error" />
+		<param name="BufferSize" value="512" />
+		<param name="SMTPHost" value="smtp.yeah.net" />
+		<param name="From" value="ytiancai@yeah.net" />
+		<param name="To" value="287585590@qq.com" />
+		<param name="Subject" value="ErrorLog" />
+		<param name="SMTPUsername" value="ytiancai@yeah.net" />
+		<param name="SMTPPassword" value="78965410" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="\t%d{yyyy/MM/dd HH:mm:ss} %6p %t:%c:%L%n%m%n" />
+		</layout>
+	</appender>
+	-->
+
 	<logger name="com.unlimitedfield" additivity="false">
 		<level value="all" />
 		<appender-ref ref="console" />
 		<appender-ref ref="file2" />
+		<!-- <appender-ref ref="mail" /> -->
 	</logger>
 
 	<!-- 配置包的日志级别

@@ -14,7 +14,8 @@ import org.apache.log4j.Logger;
 /**
  * <pre>
  * description：
- * as the class name
+ * 	最先进入的一个filter
+ *	想定制openSessionInView
  * </pre>
  * 
  * @author y

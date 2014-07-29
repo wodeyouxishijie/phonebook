@@ -15,9 +15,7 @@
 	
 	<!-- load properties -->
 	<context:property-placeholder location="classpath:jdbc.properties"/>
-	
-	<!-- ehcache 未设定 -->
-	
+
 	<!-- c3p0 dataSource -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="jdbcUrl" value="${url}"></property>
@@ -48,20 +46,13 @@
 		</property>
 		<!-- 指定hibernate的配置文件位置 -->
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
-		<!-- 不在搜索范围需要单独载入的时候
-		<property name="annotatedClasses">
-			<list>
-				<value>com.unlimitedfield.y.toother.hp.dataSyn.ToBicycycleRentRecords</value>
-			</list>
-		</property>
-		-->
 		<!-- annontation config 
 		<property name="packagesToScan">
 			<list>
 				<value>com.unlimitedfield.y.domain</value>
 			</list>
-		</property>-->
-		<!-- hbm config 
+		</property> -->
+		<!-- hbm config
 		<property name="mappingDirectoryLocations">
 			<list>
 				<value>classpath:com/unlimitedfield/y/domain</value>

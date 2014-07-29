@@ -4,49 +4,6 @@
 
 <hibernate-configuration>
 <session-factory>
-<!-- 正是的都已经写在spring xml里面了，也就是书这边都是练习用的 -->
-	<!-- connection -->
-	<!-- <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property> -->
-	<!-- <property name="connection.url">jdbc:mysql://localhost:3306/ystest?useUnicode=true&amp;characterEncoding=utf8</property> -->
-	<!-- <property name="connection.driver_class">com.mysql.jdbc.Driver</property> -->
-	<!-- <property name="connection.username">root</property> -->
-	<!-- <property name="connection.password">ez!@#456</property> -->
-
-	<!-- <property name="dialect">org.hibernate.dialect.SQLServer2008Dialect</property> -->
-	<!-- <property name="connection.url">jdbc:sqlserver://61.160.125.14:1418;databaseName=ystest</property> -->
-	<!-- <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property> -->
-	<!-- <property name="connection.username">cxdbuser</property> -->
-	<!-- <property name="connection.password">cx123456</property> -->
-
-	<!-- sql show -->
-	<!-- <property name="show_sql">true</property> -->
-	<!-- <property name="format_sql">false</property> -->
-
-	<!-- isolation level -->
-	<!-- <property name="hibernate.connection.isolation">2</property> -->
-
-	<!-- current session -->
-	<!-- <property name="current_session_context_class">thread</property> -->
-
-	<!-- database connection pool -->
-	<!-- <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> -->
-	<!-- <property name="c3p0.min_size">2</property> -->
-	<!-- <property name="c3p0.max_size">50</property> -->
-	<!-- <property name="c3p0.timeout">120</property> -->
-	<!-- <property name="c3p0.idle_test_period">3000</property> -->
-
-	<!-- cache -->
-	<!-- <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property> -->
-	<!-- <property name="cache.use_query_cache">true</property> -->
-
-	<!-- hbm2dll -->
-	<!-- <property name="hbm2ddl.auto">create</property> -->
-	<!-- <property name="hbm2ddl.auto">update</property> -->
-	<!-- <property name="hbm2ddl.auto">validate</property> -->
-
-	<!-- mapping -->
-	<!-- hp 系统参数配置
-	<mapping resource="com/unlimitedfield/y/toother/hp/systemparameter/SystemParameter.hbm.xml" /> -->
 
 </session-factory>
 </hibernate-configuration>

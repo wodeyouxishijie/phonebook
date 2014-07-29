@@ -3,6 +3,8 @@ package com.unlimitedfield.y.base;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * <pre>
  * description：
@@ -44,6 +46,7 @@ public class BaseServiceImpl<T> extends DaoSupportImpl<T> implements BaseService
 	}
 
 	// override Dao
+	@Transactional
 	@Override
 	public void add(T entity) {
 		if (entity == null)
@@ -51,6 +54,7 @@ public class BaseServiceImpl<T> extends DaoSupportImpl<T> implements BaseService
 		super.add(entity);
 	}
 
+	@Transactional
 	@Override
 	public void save(T entity) {
 		if (entity == null)
@@ -58,6 +62,7 @@ public class BaseServiceImpl<T> extends DaoSupportImpl<T> implements BaseService
 		super.save(entity);
 	}
 
+	@Transactional
 	@Override
 	public void update(T entity) {
 		if (entity == null)
@@ -65,6 +70,7 @@ public class BaseServiceImpl<T> extends DaoSupportImpl<T> implements BaseService
 		super.update(entity);
 	}
 
+	@Transactional
 	@Override
 	public void delById(Long id) {
 		if (id == null)
@@ -72,6 +78,7 @@ public class BaseServiceImpl<T> extends DaoSupportImpl<T> implements BaseService
 		super.delById(id);
 	}
 
+	@Transactional
 	@Override
 	public void del(T entity) {
 		if (entity == null)

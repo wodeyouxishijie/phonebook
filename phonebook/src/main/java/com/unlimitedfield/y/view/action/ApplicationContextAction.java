@@ -23,7 +23,7 @@ public class ApplicationContextAction extends BaseAction{
 
 	/**
 	 * 查看spring容器中自己的beans<br>
-	 * http://localhost:8080/phonebook/spring_showBeans
+	 * http://localhost:8080/happin/spring_showBeans
 	 */
 	public String showBeans() {
 		actionResult.setString(Springu.showSlfInstance());

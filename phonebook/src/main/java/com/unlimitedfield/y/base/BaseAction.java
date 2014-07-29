@@ -81,7 +81,7 @@ public abstract class BaseAction<T> //
 	protected Map<String, Object> session;
 	protected Map<String, Object> application;
 	protected ActionContext action;// action 上下文
-	protected ServletContext context;//getRealPath等方法需要
+	protected ServletContext context;// getRealPath等方法需要
 	@Override
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
@@ -110,7 +110,7 @@ public abstract class BaseAction<T> //
 	// 如果和调用本身的冲突，此处的优先级更低
 	protected Integer page;// 页面
 	protected Integer rows;// 每页个数
-	protected static Integer defaultRows = 10;//默认页数,能够重写
+	protected static Integer defaultRows = 10;// 默认页数,能够重写
 	public Integer getPage() {
 		return page;
 	}
@@ -125,6 +125,6 @@ public abstract class BaseAction<T> //
 	}
 
 	// =============== Service实例的声明 ==================
-//	@Resource
-//	protected MessageBoardService messageBoardService;
+	// @Resource
+	// protected MessageBoardService messageBoardService;
 }

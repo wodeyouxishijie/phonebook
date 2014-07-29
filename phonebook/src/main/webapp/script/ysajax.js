@@ -1,6 +1,9 @@
+
+//js版
+
 /*
  * 创建 XMLHttpRequest 对象
- */
+ *//**/
 function getXhr(){
 	var xhr = null;
 	//if(window.XMLHttpRequest){//此亦可
@@ -14,3 +17,4 @@ function getXhr(){
 	return xhr;
 }
 
+//jquery版

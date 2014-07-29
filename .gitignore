@@ -2,3 +2,4 @@ phonebook/.*
 phonebook/target
 gitCommitSlf.bat
 phonebook/src/main/resources/jdbc.properties
+phonebook/src/main/resources/replace/jdbc.properties

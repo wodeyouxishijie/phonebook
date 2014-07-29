@@ -10,7 +10,6 @@ import com.unlimitedfield.y.base.ActionContextAware;
  * <pre>
  * description：
  * SecondInterceptor
- * function as the name
  * </pre>
  * 
  * @author y

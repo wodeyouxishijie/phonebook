@@ -1,6 +1,5 @@
 package com.unlimitedfield.y.view.action;
 
-
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -20,9 +19,9 @@ public class StringLengthAction extends BaseAction{
 
 	/**
 	 * 显示
-	 * http://localhost:8080/phonebook/stringLength_main
+	 * http://localhost:8080/happin/stringLength_main
 	 */
-	public String main(){
+	public String showIndex(){
 		return actionResult.getResult();
 	}
 }

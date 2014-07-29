@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 更改后缀 逗号分割 -->
+	<constant name="struts.action.extension" value=",,action" />
+	<!-- 解码post格式 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 去掉感叹号动态方法调用模式 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<!-- 把主题配置为simple -->
+    <constant name="struts.ui.theme" value="simple" />
+	<!-- 开发模式,xml修改自动加载,类还需重新部署 ,debug server很强大 -->
+	<constant name="struts.serve.static.browserCache" value="true" />
+	<constant name="struts.xslt.nocache" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.i18n.reload" value="false" />
+	<constant name="struts.configuration.xml.reload" value="false" />
+
+	<!-- http://localhost:8080/happin/{1}_{2} -->
+	<package name="root" namespace="/" extends="struts-default,json-default">
+		<result-types>
+			<result-type name="streamEx" class="com.unlimitedfield.y.base.StreamExResult" />
+			<result-type name="jsonEx" class="com.unlimitedfield.y.base.JsonExResult" />
+		</result-types>
+		
+		<interceptors>
+			<interceptor name="firstInterceptor" class="com.unlimitedfield.y.filter.FirstInterceptor" />
+			<interceptor name="actionContextAwareInterceptor" class="com.unlimitedfield.y.filter.ActionContextAwareInterceptor" />
+			<interceptor name="pageRowsInterceptor" class="com.unlimitedfield.y.filter.PageRowsInterceptor" />
+			<interceptor name="lastInterceptor" class="com.unlimitedfield.y.filter.LastInterceptor" />
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="firstInterceptor"></interceptor-ref>
+				<interceptor-ref name="actionContextAwareInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="pageRowsInterceptor"></interceptor-ref>
+				<interceptor-ref name="lastInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="defaultStack"></default-interceptor-ref>
+		
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result>/jsp/action/{1}/{2}.jsp</result>
+			<result name="dispatcher" type="dispatcher">${actionResult.dispatcher}</result>
+			<result name="json" type="json">
+				<param name="root">actionResult.json</param>
+			</result>
+			<result name="jsonEx" type="jsonEx">
+				<param name="root">actionResult.jsonEx.json</param>
+				<param name="excludeNullProperties">actionResult.jsonEx.notShowNull</param> 
+				<param name="includeProperties">actionResult.jsonEx.show</param>
+				<param name="excludeProperties">actionResult.jsonEx.notShow</param>
+			</result>
+			<result name="redirect" type="redirect">${actionResult.redirect}${actionResult.redirectParameter}</result>
+			<result name="redirectAction" type="redirectAction">${actionResult.redirectAction}${actionResult.redirectParameter}</result>
+			<result name="redirectFunction" type="redirectAction">{1}_${actionResult.redirectFunction}${actionResult.redirectParameter}</result>
+			<result name="string" type="stream">
+  					<param name="inputName">actionResult.string</param> 
+  					<param name="contentType">text/plain</param>
+  					<param name="contentCharSet">utf-8</param>
+			</result>
+			<result name="downLoad" type="streamEx">
+  					<param name="inputName">actionResult.downLoad.inputStream</param>
+  					<param name="contentType">${actionResult.downLoad.contentType}</param>
+  					<param name="contentDisposition">${actionResult.downLoad.fileName}</param>
+			</result>
+			<result name="image" type="stream">
+				<param name="inputName">actionResult.image</param>
+				<param name="contentType">image/jpeg</param>
+				<param name="contentDisposition">inline</param>
+			</result>
+		</action>
+
+	</package>
+
+</struts>    

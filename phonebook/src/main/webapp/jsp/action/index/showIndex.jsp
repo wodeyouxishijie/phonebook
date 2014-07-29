@@ -13,10 +13,12 @@ http://localhost:8080/happin/jsp/action/index/showIndex.jsp
 </head>
 <body>
 	首页<br/>
-    <a href="stringLength_main">获取字符串长度</a><br/>
+    <a href="stringLength_showIndex">获取字符串长度</a><br/>
     <a href="applicationContext_showBeans">容器内对象</a><br/>
     <a href="applicationContext_showDomainBeans">SessionFactory内所有对象</a><br/>
     <a href="index_showTime" target="_blank">服务器时间</a><br/>
+    <a href="showData_showIndex" target="_blank">数据</a><br/>
+    <a href="showFile_showIndex" target="_blank">文件</a><br/>
     
 	<hr />
 	
