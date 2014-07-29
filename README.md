@@ -3,7 +3,6 @@
 
 通讯录
 UTF-8
-
 =========
 jdk+tomcat+eclipse+maven+git+mysql+spring+struts2+hibernate
 
