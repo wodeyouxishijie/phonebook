@@ -1,4 +1,4 @@
-package com.unlimitedfield.y.listener;
+package com.unlimitedfield.phonebook.listener;
 
 import javax.servlet.ServletContext;
 
@@ -37,7 +37,6 @@ public class InitApplicaitonContextListener implements ApplicationListener,
 	 */
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
-		// log.trace("-->触发Spring事件：" + event.getClass());
 		log.trace("-->Spring初始化...");
 		/**
 		 * 启动事件即刷新事件

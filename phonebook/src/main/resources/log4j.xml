@@ -52,7 +52,7 @@
 		<param name="To" value="287585590@qq.com" />
 		<param name="Subject" value="ErrorLog" />
 		<param name="SMTPUsername" value="ytiancai@yeah.net" />
-		<param name="SMTPPassword" value="78965410" />
+		<param name="SMTPPassword" value="xxxx" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="\t%d{yyyy/MM/dd HH:mm:ss} %6p %t:%c:%L%n%m%n" />
 		</layout>

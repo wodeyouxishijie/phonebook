@@ -2,7 +2,7 @@ package com.unlimitedfield.y.util.material;
 
 import org.apache.log4j.Logger;
 
-import com.unlimitedfield.y.listener.InitApplicaitonContextListener;
+import com.unlimitedfield.phonebook.listener.InitApplicaitonContextListener;
 
 /**
  * <pre>
