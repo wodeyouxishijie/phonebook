@@ -14,7 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
  * @author y
  * @version createdate：2014/06/11
  */
-public class BaseServiceImpl<T> extends DaoSupportImpl<T> implements BaseService<T> {
+@Transactional(readOnly=true)
+public class BaseServiceImpl<T> extends BaseDaoImpl<T> implements BaseService<T> {
 
 	// implements
 	@Override

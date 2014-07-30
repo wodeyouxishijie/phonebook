@@ -3,18 +3,17 @@ package com.unlimitedfield.y.base;
 import java.io.Serializable;
 import java.util.List;
 
-
 /**
  * <pre>
  * description：
- *	T是实体类型
- *	I是主键
+ * T是实体类型
+ * I是主键
  * </pre>
  * 
  * @author y
- * @version createdate：2014/07/25 
+ * @version createdate：2014/07/25
  */
-public interface DaoSupportCore <T,I extends Serializable> {
+public interface BaseDaoCore<T, I extends Serializable> {
 
 	/**
 	 * 保存实体
@@ -59,7 +58,7 @@ public interface DaoSupportCore <T,I extends Serializable> {
 	 * 查询数量
 	 */
 	Long queryCount();
-	
+
 	/**
 	 * 查询所有,请基本不要用
 	 */
@@ -84,7 +83,7 @@ public interface DaoSupportCore <T,I extends Serializable> {
 	 * 如果entity是个空对象则和queryAll没什么区别<br>
 	 */
 	Long queryCount(T entity);
-	
+
 	/**
 	 * 查询所有,请基本不要用<br>
 	 * 实体中字段有值的按照值查找<br>
@@ -94,7 +93,7 @@ public interface DaoSupportCore <T,I extends Serializable> {
 	 * 如果entity是个空对象则和queryAll没什么区别<br>
 	 */
 	List<T> queryAll(T entity);
-	
+
 	/**
 	 * 实体中字段有值的按照值查找<br>
 	 * 实体中字段是字符串的按照模糊匹配查找<br>
@@ -104,7 +103,4 @@ public interface DaoSupportCore <T,I extends Serializable> {
 	 */
 	QueryResult<T> queryAll(T entity, int firstResult, int maxResults);
 
-	
-
 }
-

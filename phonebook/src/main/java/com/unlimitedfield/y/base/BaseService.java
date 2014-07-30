@@ -10,7 +10,7 @@ package com.unlimitedfield.y.base;
  * @author y
  * @version createdate：2014/06/11
  */
-public interface BaseService<T> extends DaoSupport<T> {
+public interface BaseService<T> extends BaseDao<T> {
 	/**
 	 * 按页查找
 	 */

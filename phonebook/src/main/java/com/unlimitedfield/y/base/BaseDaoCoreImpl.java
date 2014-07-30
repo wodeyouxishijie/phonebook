@@ -14,21 +14,20 @@ import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <pre>
  * description：
- *	Dao核心的分装
+ * Dao核心的分装
  * </pre>
  * 
  * @author y
- * @version createdate：2014/07/25 
+ * @version createdate：2014/07/25
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-@Transactional(readOnly=true)
-public class DaoSupportCoreImpl<T,I extends Serializable> implements DaoSupportCore<T,I>{
-	private static Logger log = Logger.getLogger(DaoSupportCoreImpl.class);
+// @Transactional(readOnly=true)
+public class BaseDaoCoreImpl<T, I extends Serializable> implements BaseDaoCore<T, I> {
+	private static Logger log = Logger.getLogger(BaseDaoCoreImpl.class);
 	@Resource
 	private SessionFactory sessionFactory;
 	protected Class<T> clazz;
@@ -41,7 +40,7 @@ public class DaoSupportCoreImpl<T,I extends Serializable> implements DaoSupportC
 		condition.add("String");
 		condition.add("Date");
 	}
-	
+
 	{
 		// 考虑到有参的扩展
 		if (!(getClass().getGenericSuperclass() instanceof ParameterizedType)) {
@@ -58,7 +57,7 @@ public class DaoSupportCoreImpl<T,I extends Serializable> implements DaoSupportC
 			// System.out.println("clazz = " + clazz.getName());// 只有1个
 		}
 	}
-	public DaoSupportCoreImpl() {
+	public BaseDaoCoreImpl() {
 		// if (!(getClass().getGenericSuperclass() instanceof ParameterizedType)) {
 		// // 未指定泛型，或者包装的时候的new instance
 		// return;
@@ -79,23 +78,23 @@ public class DaoSupportCoreImpl<T,I extends Serializable> implements DaoSupportC
 	protected Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
-	
-	@Transactional
+
+	// @Transactional
 	public void add(T entity) {
 		getSession().save(entity);
 	}
 
-	@Transactional
+	// @Transactional
 	public void save(T entity) {
 		getSession().saveOrUpdate(entity);
 	}
 
-	@Transactional
+	// @Transactional
 	public void update(T entity) {
 		getSession().update(entity);
 	}
 
-	@Transactional
+	// @Transactional
 	public void delById(I id) {
 		Object obj = queryById(id);
 		if (obj != null) {
@@ -103,7 +102,7 @@ public class DaoSupportCoreImpl<T,I extends Serializable> implements DaoSupportC
 		}
 	}
 
-	@Transactional
+	// @Transactional
 	public void del(T entity) {
 		getSession().delete(entity);
 	}
@@ -124,13 +123,13 @@ public class DaoSupportCoreImpl<T,I extends Serializable> implements DaoSupportC
 				"from " + clazz.getSimpleName())//
 				.list();
 	}
-	
+
 	public Long queryCount() {
 		return (Long) getSession().createQuery(//
 				"select count(*) from " + clazz.getSimpleName())//
 				.uniqueResult();
 	}
-	
+
 	public QueryResult<T> queryAll(int firstResult, int maxResults) {
 		return new QueryResult<T>(getSession().createQuery(//
 				"from " + clazz.getSimpleName())//
@@ -141,133 +140,131 @@ public class DaoSupportCoreImpl<T,I extends Serializable> implements DaoSupportC
 
 	public Long queryCount(T entity) {
 		Map<Integer, Object> map = new HashMap<Integer, Object>();
-		//对象所有属性的列表
+		// 对象所有属性的列表
 		Field[] field = entity.getClass().getDeclaredFields();
-		//存取字段的内容
-		String hql = "from " + clazz.getSimpleName()+getCondition(field,entity,map);
-		log.trace("hql条件语句是:"+hql);
-		
-		//数量查询
+		// 存取字段的内容
+		String hql = "from " + clazz.getSimpleName() + getCondition(field, entity, map);
+		log.trace("hql条件语句是:" + hql);
+
+		// 数量查询
 		Query q2 = getSession().createQuery("select count(*) " + hql);
-		//设置变量
-		for(Integer i:map.keySet()){
+		// 设置变量
+		for (Integer i : map.keySet()) {
 			q2.setParameter(field[i].getName(), map.get(i));
 		}
 		return (Long) q2.uniqueResult();
 	}
-	
+
 	@Override
-	public List<T> queryAll(T entity){
+	public List<T> queryAll(T entity) {
 		Map<Integer, Object> map = new HashMap<Integer, Object>();
-		//对象所有属性的列表
+		// 对象所有属性的列表
 		Field[] field = entity.getClass().getDeclaredFields();
-		//存取字段的内容
-		String hql = "from " + clazz.getSimpleName()+getCondition(field,entity,map);
-		log.trace("hql条件语句是:"+hql);
-		
+		// 存取字段的内容
+		String hql = "from " + clazz.getSimpleName() + getCondition(field, entity, map);
+		log.trace("hql条件语句是:" + hql);
+
 		Query q = getSession().createQuery(hql);
-		//设置变量
-		for(Integer i:map.keySet()){
+		// 设置变量
+		for (Integer i : map.keySet()) {
 			q.setParameter(field[i].getName(), map.get(i));
 		}
-		//查询
+		// 查询
 		List<T> list = q.list();
 		return list;
 	}
-	
+
 	@Override
 	public QueryResult<T> queryAll(T entity, int firstResult, int maxResults) {
 		Map<Integer, Object> map = new HashMap<Integer, Object>();
-		//对象所有属性的列表
+		// 对象所有属性的列表
 		Field[] field = entity.getClass().getDeclaredFields();
-		//存取字段的内容
-		String hql = "from " + clazz.getSimpleName()+getCondition(field,entity,map);
-		log.trace("hql条件语句是:"+hql);
-		
+		// 存取字段的内容
+		String hql = "from " + clazz.getSimpleName() + getCondition(field, entity, map);
+		log.trace("hql条件语句是:" + hql);
+
 		Query q = getSession().createQuery(hql);
-		//设置变量
-		for(Integer i:map.keySet()){
+		// 设置变量
+		for (Integer i : map.keySet()) {
 			q.setParameter(field[i].getName(), map.get(i));
 		}
-		
-		//查询
+
+		// 查询
 		List<T> list = q.setFirstResult(firstResult)//
 				.setMaxResults(maxResults)//
 				.list();
-		
-		//数量查询
+
+		// 数量查询
 		Query q2 = getSession().createQuery("select count(*) " + hql);
-		//设置变量
-		for(Integer i:map.keySet()){
+		// 设置变量
+		for (Integer i : map.keySet()) {
 			q2.setParameter(field[i].getName(), map.get(i));
 		}
 		Long l = (Long) q2.uniqueResult();
-		
+
 		return new QueryResult<T>(list, l);
 	}
-	
+
 	/**
 	 * 拼接字符串<br>
 	 * Integer,Long,Boolean,String,Date<br>
 	 * 满足上面的类型则拼接条件<br>
 	 * map<Integer,Object>存放的是field的编号，和对象的字段值<br>
 	 */
-	private String getCondition(Field[] field, Object model,Map<Integer, Object> map){
+	private String getCondition(Field[] field, Object model, Map<Integer, Object> map) {
 		String res = " where ";
 		boolean tag = false;
-		for(int i=0;i<field.length;i++){
+		for (int i = 0; i < field.length; i++) {
 			String name = field[i].getName();
 			String type = field[i].getGenericType().toString();
-			if(!condition.contains(getSimpleClassName(type))){
+			if (!condition.contains(getSimpleClassName(type))) {
 				continue;
 			}
 			try {
 				Object o = model.getClass().getMethod(getMethod(name)).invoke(model);
-				if(o==null){
+				if (o == null) {
 					continue;
 				}
-				//模糊匹配
-				if(getSimpleClassName(type).equals("String")){
-					o = "%"+((String)o) + "%"; 
+				// 模糊匹配
+				if (getSimpleClassName(type).equals("String")) {
+					o = "%" + ((String) o) + "%";
 				}
 				map.put(i, o);
-				if(tag){
-					if(getSimpleClassName(type).equals("String")){
-						res += "and "+name+" like :"+name+" ";
-					}else{
-						res += "and "+name+"=:"+name+" ";
+				if (tag) {
+					if (getSimpleClassName(type).equals("String")) {
+						res += "and " + name + " like :" + name + " ";
+					} else {
+						res += "and " + name + "=:" + name + " ";
 					}
-				}else{
-					if(getSimpleClassName(type).equals("String")){
-						res += name+" like :"+name+" ";
-					}else{
-						res += name+"=:"+name+" ";
+				} else {
+					if (getSimpleClassName(type).equals("String")) {
+						res += name + " like :" + name + " ";
+					} else {
+						res += name + "=:" + name + " ";
 					}
 					tag = true;
 				}
 			} catch (Exception e) {
 			}
 		}
-		if(tag){
+		if (tag) {
 			return res;
-		}else{
+		} else {
 			return "";
 		}
 	}
-	
-	/*获取简单类名*/
-	private String getSimpleClassName(String name){
-		if(name.indexOf("<")!=-1){
-			name = name.substring(0,name.indexOf("<"));
-		}
-		return name.substring(name.lastIndexOf(".")+1);
-	}
-	
-	/*获取方法名*/
-	private String getMethod(String name){
-		return "get"+name.substring(0, 1).toUpperCase() + name.substring(1);
-	}
-	
-	
-}
 
+	/* 获取简单类名 */
+	private String getSimpleClassName(String name) {
+		if (name.indexOf("<") != -1) {
+			name = name.substring(0, name.indexOf("<"));
+		}
+		return name.substring(name.lastIndexOf(".") + 1);
+	}
+
+	/* 获取方法名 */
+	private String getMethod(String name) {
+		return "get" + name.substring(0, 1).toUpperCase() + name.substring(1);
+	}
+
+}
